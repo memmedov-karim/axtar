@@ -5,6 +5,18 @@ import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 function App() {
+  const sortData = (data) => {
+    if (data) {
+      data.sort((a, b) => {
+        let nameA = a.Ad.toLowerCase();
+        let nameB = b.Ad.toLowerCase();
+
+        // compare the lowercase names using localeCompare
+        return nameA.localeCompare(nameB);
+      });
+    }
+    return data;
+  };
   const ClearString = (val) => {
     let neww = "";
     for (let i of String(val)) {
@@ -62,7 +74,7 @@ function App() {
     }
     return "Məktəb tapılmadı"
   }
-  const Students = SearchingData?.map((user, ind) => {
+  const Students = sortData(SearchingData)?.map((user, ind) => {
     let name = FindScholName(user["Məktəb kodu"]);
     let otherInfo = `Mərkəz:${user["Mərkəz"]},Otaq:${user["otaq"]},Yer:${user["yer"]}`;
     let res = name+ "||" + otherInfo;
