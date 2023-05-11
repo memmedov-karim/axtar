@@ -1,10 +1,15 @@
 import './App.css';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { Search } from './Components/SearchingForm/Search';
 import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 function App() {
+  const [us,setus] = useState([]);
+  useEffect(()=>{
+    fetch("https://testbackend-gj63.onrender.com/users").then(res=>res.json()).then(dt=>setus(dt))
+  },[])
+  
   const sortData = (data) => {
     if (data) {
       data.sort((a, b) => {
@@ -84,6 +89,9 @@ function App() {
   });
   return (
     <div className="App">
+      us.map((val,key)=>{
+    <div key={key}>{val.name}</div>
+  })
       <h1>Axşama Yemək varr yaxşı İşdayın</h1>
       <Search find={find} getData={getData} searchingData={searchingData} />
       {Students}
