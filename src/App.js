@@ -5,11 +5,7 @@ import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 function App() {
-  const api = "https://testbackend-gj63.onrender.com/users";
-  const [us,setus] = useState([]);
-  useEffect(()=>{
-    fetch(api).then(dt=>dt.json()).then(dt=>setus(dt))
-  },[])
+ 
   
   const sortData = (data) => {
     if (data) {
@@ -90,11 +86,6 @@ function App() {
   });
   return (
     <div className="App">
-      <ol>
-        {us.map((val,ind)=>
-          <li key={ind}>{val.name}</li>
-        )}
-      </ol>
       <h1>Axşama Yemək varr yaxşı İşdayın</h1>
       <Search find={find} getData={getData} searchingData={searchingData} />
       {Students}
