@@ -40,7 +40,7 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Sinif:</span>
-          <span style={{color:colorr}} onClick={()=>handleClick(sinif)} className="user-info-value">{sinif}</span>
+          <span style={{color:colorr}} onClick={()=>handleClick(sinif<10 ? "0"+sinif:sinif)} className="user-info-value">{sinif}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Bölmə:</span>
