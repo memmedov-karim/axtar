@@ -77,11 +77,12 @@ function App() {
     return "Məktəb tapılmadı"
   }
   const Students = sortData(SearchingData)?.map((user, ind) => {
-    let name = FindScholName(user["Məktəb kodu"]);
-    let otherInfo = `Mərkəz:${user["Mərkəz"]},Otaq:${user["otaq"]},Yer:${user["yer"]}`;
-    let res = name+ "||" + otherInfo;
+    let name = FindScholName(user["mkod"]);
+    let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
+    let rti = `RTI-${user["RTİ"]}`
+    let res = name+ "||" + otherInfo+"||"+rti;
     return (
-      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["Məktəb kodu"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["istiqamet"]} />
+      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]} />
     );
   });
   return (
