@@ -86,7 +86,7 @@ function App() {
   });
   return (
     <div className="App">
-      <h1>Hər kəsə Salammmmmmmmmmmmmm</h1>
+      <h1>Saaaaaalammmmmmmmmmmmmmmm</h1>
       <Search find={find} getData={getData} searchingData={searchingData} />
       {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
