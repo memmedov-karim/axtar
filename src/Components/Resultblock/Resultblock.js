@@ -32,7 +32,7 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Məktəb:</span>
-          <span className="user-info-value">{mktb}</span>
+          <span style={{color:colorr}} onClick={()=>handleClick(mktb)} className="user-info-value">{mktb}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Utis:</span>
@@ -48,7 +48,7 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Fənn:</span>
-          <span className="user-info-value">{fn}</span>
+          <span style={{color:colorr}} onClick={()=>handleClick(fn[0])} className="user-info-value">{fn}</span>
         </div>
       </div>
     </div>
