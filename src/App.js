@@ -91,7 +91,7 @@ function App() {
       <Search find={find} getData={getData} searchingData={searchingData} />
       {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
-        <h1 style={{ textAlign:"center",color: "red" }}>Məlumat tapılmadı</h1>
+        <h1 style={{ textAlign:"center",color: "red" }}>Belə Yetimçə yoxdu burda</h1>
       ) : (
         ""
       )}
