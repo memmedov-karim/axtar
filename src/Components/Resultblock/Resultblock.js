@@ -44,7 +44,6 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
   const resetOtherColors = (currentSetColor) => {
     const allSetColors = [setColorAd, setColorSoyad, setColorAta,setcolsnf,setcolormktb,setcolorutis,setcolorblm,setcolorfenn];
     // Add other setColor functions to the array
-
     allSetColors.forEach((setColor) => {
       if (setColor !== currentSetColor) {
         setColor("");

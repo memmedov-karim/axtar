@@ -5,7 +5,35 @@ import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 function App() {
- 
+  const ChangeText = (val) => {
+    if (val === "W") {
+      return "ə";
+    } else if (val === "I") {
+      return "ı";
+    } else if (val === "s") {
+      return "ş";
+    } else if (val === "g") {
+      return "ğ";
+    } else if (val === "o") {
+      return "ö";
+    } else if (val === "c") {
+      return "ç";
+    } else if (val === "u") {
+      return "ü";
+    } else {
+      return val.toLowerCase();
+    }
+  };
+  const chngword = (text)=>{
+    let neww = "";
+    for(let i of text){
+      neww+=ChangeText(i);
+    }
+    return neww;
+  }
+
+  console.log(chngword('ZWHRA'))
+
   
   const sortData = (data) => {
     if (data) {
@@ -44,10 +72,11 @@ function App() {
   const getData = (e) => {
     console.log("ok")
     const {name,value} = e.target;
+
     setData(prev=>{
       return {
         ...prev,
-        [name]:value
+        [name]:['ad','soyad','ata'].includes(name) ? chngword(value) : value
       }
     })
   }
