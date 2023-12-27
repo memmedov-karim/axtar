@@ -5,6 +5,51 @@ import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 function App() {
+  function calculateLevenshteinDistance(str1, str2) {
+    const len1 = str1.length + 1;
+    const len2 = str2.length + 1;
+  
+    // Create a matrix to store distances
+    const matrix = Array(len1).fill(null).map(() => Array(len2).fill(null));
+  
+    // Initialize the matrix
+    for (let i = 0; i < len1; i++) {
+      matrix[i][0] = i;
+    }
+  
+    for (let j = 0; j < len2; j++) {
+      matrix[0][j] = j;
+    }
+  
+    // Fill in the matrix
+    for (let i = 1; i < len1; i++) {
+      for (let j = 1; j < len2; j++) {
+        const cost = str1.charAt(i - 1) === str2.charAt(j - 1) ? 0 : 1;
+  
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j] + 1,     // Deletion
+          matrix[i][j - 1] + 1,     // Insertion
+          matrix[i - 1][j - 1] + cost // Substitution
+        );
+      }
+    }
+  
+    // The Levenshtein distance is the value in the bottom-right cell of the matrix
+    return matrix[len1 - 1][len2 - 1];
+  }
+  
+  // Example usage:
+  const similarityThreshold = 0.5; // You can adjust this threshold based on your requirements
+  
+  function areStringsSimilar(str1, str2) {
+    console.log(str1,str2)
+    const distance = calculateLevenshteinDistance(str1, str2);
+    return distance <= similarityThreshold;
+  }
+  
+  // Test examples
+  // console.log(areStringsSimilar("rəfət", "rüfət")); // true
+  
   const ChangeText = (val) => {
     if (val === "W") {
       return "ə";
@@ -76,7 +121,7 @@ function App() {
     setData(prev=>{
       return {
         ...prev,
-        [name]:['ad','soyad','ata'].includes(name) ? chngword(value) : value
+        [name]:value
       }
     })
   }
@@ -90,7 +135,7 @@ function App() {
     }
     if(res!==""){
       const data = Data.filter(
-        (obj) => ClearString(obj["Ad"]).toLowerCase().includes(searchingData["ad"].toLowerCase()) && ClearString(obj["Soyad"]).toLowerCase().includes(searchingData["soyad"].toLowerCase()) && ClearString(obj["Ata adı"]).toLowerCase().includes(ClearString(searchingData["ata"]).toLowerCase()) && (String(ClearString(obj["Utis"]).toLowerCase()).includes(searchingData["utis"].toLowerCase()) || checkutis(String(obj["Utis"]),searchingData["utis"])) &&
+        (obj) => ( ClearString(obj["Ad"]).toLowerCase().includes(searchingData["ad"].toLowerCase()) ) && ClearString(obj["Soyad"]).toLowerCase().includes(searchingData["soyad"].toLowerCase()) && ClearString(obj["Ata adı"]).toLowerCase().includes(ClearString(searchingData["ata"]).toLowerCase()) && (String(ClearString(obj["Utis"]).toLowerCase()).includes(searchingData["utis"].toLowerCase()) || checkutis(String(obj["Utis"]),searchingData["utis"])) &&
         String(ClearString(obj["mkod"]).toLowerCase()).includes(String(searchingData["məktəb"].toLowerCase())) && ClearString(obj["Bölmə"]).toLowerCase().includes(searchingData["bölmə"].toLowerCase()) && String(ClearString(obj["sinif"]).toLowerCase()).includes(searchingData["sinif"].toLowerCase())
       );
     setSearchingData(data);
