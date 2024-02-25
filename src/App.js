@@ -144,14 +144,14 @@ function App() {
   }
   const FindScholName = (code) => {
     for(let i of SchoolCodes){
-      if(i["Yeni Kod 5 rəqəmli ( rayon + məktəb)"]===String(code)){
+      if(String(i["Yeni Kod 5 rəqəmli ( rayon + məktəb)"])===String(code)){
         return i["Məktəbin adı"]
       }
     }
-    return "Məktəb tapılmadı"
+    return "Məktəb tapılmadı";
   }
   const Students = sortData(SearchingData)?.map((user, ind) => {
-    let name = user["mekteb"];
+    let name = FindScholName(user["mkod"]);
     let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
     let rti = `RTI-${user["RTİ"]}`
     let res = name+ "||" + otherInfo+"||"+rti;
