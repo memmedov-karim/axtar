@@ -151,7 +151,7 @@ function App() {
     return "Məktəb tapılmadı"
   }
   const Students = sortData(SearchingData)?.map((user, ind) => {
-    let name = FindScholName(user["mkod"]);
+    let name = user["mekteb"];
     let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
     let rti = `RTI-${user["RTİ"]}`
     let res = name+ "||" + otherInfo+"||"+rti;
@@ -161,7 +161,7 @@ function App() {
   });
   return (
     <div className="App">
-      <h1>Saaaaaalammmmmmmmmmmmmmmm</h1>
+      <h1>Salamammmmmmmmmmmmmmmmmmmmmm</h1>
       <Search find={find} getData={getData} searchingData={searchingData} />
       {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
