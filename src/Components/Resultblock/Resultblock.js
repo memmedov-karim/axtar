@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Resultblock.css";
-//Ə-W,
 export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
   const ChangeText = (val) => {
     if (val.toUpperCase() === "Ə") {
@@ -28,11 +27,6 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
     }
     return neww;
   }
-  // let d = ""
-  // for(let i of "Dilbərdınşğöçü"){
-  //   d+=ChangeText(i)
-  // }
-  // console.log(d)
   const [colorrsnf,setcolsnf] = React.useState("")
   const [colorAd, setColorAd] = React.useState("");
   const [colorSoyad, setColorSoyad] = React.useState("");
@@ -43,7 +37,6 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
   const [colorfenn,setcolorfenn] = useState("");
   const resetOtherColors = (currentSetColor) => {
     const allSetColors = [setColorAd, setColorSoyad, setColorAta,setcolsnf,setcolormktb,setcolorutis,setcolorblm,setcolorfenn];
-    // Add other setColor functions to the array
     allSetColors.forEach((setColor) => {
       if (setColor !== currentSetColor) {
         setColor("");
@@ -61,7 +54,6 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
         console.error('Failed to copy text:', error);
       });
   };
-  
   return (
     <div title={res} className="all">
       <div className="index">{num}</div>

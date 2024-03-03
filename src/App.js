@@ -153,10 +153,10 @@ function App() {
   const Students = sortData(SearchingData)?.map((user, ind) => {
     let name = FindScholName(user["mkod"]);
     let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
-    let rti = `RTI-${user["RTİ"]}`
+    let rti = `Şəhər-${user["Şəhər"]}`
     let res = name+ "||" + otherInfo+"||"+rti;
     return (
-      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]} />
+      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]}/>
     );
   });
   return (
