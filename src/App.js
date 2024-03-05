@@ -113,7 +113,7 @@ function App() {
     return true
   }
   const [SearchingData, setSearchingData] = React.useState(null);
-  const [searchingData,setData] = useState({ad:"",soyad:"",ata:"",utis:"",məktəb:"",bölmə:"",sinif:""})
+  const [searchingData,setData] = useState({ad:"",soyad:"",ata:"",utis:"",məktəb:"",bölmə:"",sinif:"",mrkz:""})
   const getData = (e) => {
     console.log("ok")
     const {name,value} = e.target;
@@ -136,7 +136,7 @@ function App() {
     if(res!==""){
       const data = Data.filter(
         (obj) => ( ClearString(obj["Ad"]).toLowerCase().includes(searchingData["ad"].toLowerCase()) ) && ClearString(obj["Soyad"]).toLowerCase().includes(searchingData["soyad"].toLowerCase()) && ClearString(obj["Ata adı"]).toLowerCase().includes(ClearString(searchingData["ata"]).toLowerCase()) && (String(ClearString(obj["Utis"]).toLowerCase()).includes(searchingData["utis"].toLowerCase()) || checkutis(String(obj["Utis"]),searchingData["utis"])) &&
-        String(ClearString(obj["mkod"]).toLowerCase()).includes(String(searchingData["məktəb"].toLowerCase())) && ClearString(obj["Bölmə"]).toLowerCase().includes(searchingData["bölmə"].toLowerCase()) && String(ClearString(obj["sinif"]).toLowerCase()).includes(searchingData["sinif"].toLowerCase())
+        String(ClearString(obj["mkod"]).toLowerCase()).includes(String(searchingData["məktəb"].toLowerCase())) && ClearString(obj["Bölmə"]).toLowerCase().includes(searchingData["bölmə"].toLowerCase()) && ClearString(obj["Qısa ad mərkəz"]).toLowerCase().includes(searchingData["mrkz"].toLowerCase()) && String(ClearString(obj["sinif"]).toLowerCase()).includes(searchingData["sinif"].toLowerCase())
       );
     setSearchingData(data);
     }
@@ -156,7 +156,7 @@ function App() {
     let rti = `Şəhər-${user["Şəhər"]}`
     let res = name+ "||" + otherInfo+"||"+rti;
     return (
-      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]}/>
+      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]} mrkz={user["Qısa ad mərkəz"]}/>
     );
   });
   return (

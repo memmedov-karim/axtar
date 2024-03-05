@@ -8,6 +8,7 @@ export const Search = ({find,getData,searchingData}) => {
         <input onChange={getData} type="text" placeholder="Soyad" name="soyad" value={searchingData.soyad} />
         <input onChange={getData} type="text" placeholder="Ata" name="ata" value={searchingData.ata} />
         <input onChange={getData} type="text" placeholder="Utis" name="utis" value={searchingData.utis} />
+        <input onChange={getData} type="text" placeholder="Mərkəz" name="mrkz" value={searchingData.mrkz} />
       </div>
       <div className="form-row">
         <input onChange={getData} type="text" placeholder="Məktəb" name="məktəb" value={searchingData.məktəb} />

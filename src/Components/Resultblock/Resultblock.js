@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Resultblock.css";
-export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
+export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) => {
   const ChangeText = (val) => {
     if (val.toUpperCase() === "Ə") {
       return "W";
@@ -89,6 +89,10 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn}) => {
         <div className="user-info-item">
           <span className="user-info-label">Fənn:</span>
           <span style={{color:colorfenn}} onClick={()=>handleClick(fn[0],setcolorfenn)} className="user-info-value">{fn}</span>
+        </div>
+        <div className="user-info-item">
+          <span className="user-info-label">Mərkəz:</span>
+          <span className="user-info-value">{mrkz}</span>
         </div>
       </div>
     </div>
