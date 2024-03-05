@@ -140,7 +140,7 @@ function App() {
       );
     setSearchingData(data);
     }
-    setData({ad:"",soyad:"",ata:"",utis:"",məktəb:"",bölmə:"",sinif:""})
+    setData({ad:"",soyad:"",ata:"",utis:"",məktəb:"",bölmə:"",sinif:"",mrkz:""})
   }
   const FindScholName = (code) => {
     for(let i of SchoolCodes){
