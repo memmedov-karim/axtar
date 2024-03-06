@@ -47,7 +47,7 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
     navigator.clipboard.writeText(text)
       .then(() => {
         console.log('Text copied to clipboard!');
-        setcol("green")
+        setcol("red")
         resetOtherColors(setcol);
       })
       .catch((error) => {
