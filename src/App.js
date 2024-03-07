@@ -138,6 +138,7 @@ function App() {
         (obj) => ( ClearString(obj["Ad"]).toLowerCase().includes(searchingData["ad"].toLowerCase()) ) && ClearString(obj["Soyad"]).toLowerCase().includes(searchingData["soyad"].toLowerCase()) && ClearString(obj["Ata adı"]).toLowerCase().includes(ClearString(searchingData["ata"]).toLowerCase()) && (String(ClearString(obj["Utis"]).toLowerCase()).includes(searchingData["utis"].toLowerCase()) || checkutis(String(obj["Utis"]),searchingData["utis"])) &&
         String(ClearString(obj["mkod"]).toLowerCase()).includes(String(searchingData["məktəb"].toLowerCase())) && ClearString(obj["Bölmə"]).toLowerCase().includes(searchingData["bölmə"].toLowerCase()) && ClearString(obj["Qısa ad mərkəz"]).toLowerCase().includes(searchingData["mrkz"].toLowerCase()) && String(ClearString(obj["sinif"]).toLowerCase()).includes(searchingData["sinif"].toLowerCase())
       );
+      setGender("")
     setSearchingData(data);
     }
     setData({ad:"",soyad:"",ata:"",utis:"",məktəb:"",bölmə:"",sinif:"",mrkz:""})
@@ -150,7 +151,8 @@ function App() {
     }
     return "Məktəb tapılmadı";
   }
-  const Students = sortData(SearchingData)?.map((user, ind) => {
+  const [gender,setGender] = useState("");
+  const Students = sortData(SearchingData)?.filter(a=>a["Ata adı"]?.split(" ")[1]?.includes(gender))?.map((user, ind) => {
     let name = FindScholName(user["mkod"]);
     let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
     let rti = `Şəhər-${user["Şəhər"]}`
@@ -159,10 +161,19 @@ function App() {
       <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]} mrkz={user["Qısa ad mərkəz"]}/>
     );
   });
+  
+  const changeGender = (id) => {
+    setGender(id)
+  }
   return (
     <div className="App">
       <h1>Salamammmmmmmmmmmmmmmmmmmmmm</h1>
       <Search find={find} getData={getData} searchingData={searchingData} />
+      <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
+        <span onClick={()=>changeGender('q')} style={{cursor:'pointer'}}>Qiz</span>
+        <span onClick={()=>changeGender('o')} style={{cursor:'pointer'}}>Oglan</span>
+        <span onClick={()=>changeGender("")} style={{cursor:'pointer'}}>Hami</span>
+      </div>
       {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
         <h1 style={{ textAlign:"center",color: "red" }}>Belə Yetimçə yoxdu burda</h1>
