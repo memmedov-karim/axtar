@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Resultblock.css";
+import toast, { Toaster } from 'react-hot-toast';
 export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) => {
   const ChangeText = (val) => {
     if (val.toUpperCase() === "Ə") {
@@ -54,6 +55,67 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
         console.error('Failed to copy text:', error);
       });
   };
+  function convertAzeriToEnglish(inputString) {
+    const conversionMap = {
+        'Ş': 's',
+        'ş': 's',
+        'Ç': 'c',
+        'ç': 'c',
+        'Ü': 'u',
+        'ü': 'u',
+        'Ö': 'o',
+        'ö': 'o',
+        'Ğ': 'g',
+        'ğ': 'g',
+        'Ə': 'W',
+        'ə': 'W',
+        'I': 'I',
+        'ı': 'I',
+        'i':'i',
+        'İ':'i'
+    };
+    let result = '';
+    for (let i = 0; i < inputString.length; i++) {
+        const char = inputString[i];
+        if (conversionMap[char]) {
+            result += conversionMap[char];
+        } else {
+            result += char.toUpperCase();
+        }
+    }
+    return result;
+}
+
+function completeNthstring(str,n){
+    if(str.length === n){
+        return str
+    }
+    let result = str;
+    for (let i = 0; i < n-str.length; i++) {
+        result += ' ';
+    }
+    return result;
+}
+function creatNewStringFromObject(obje){
+    const {ad,soyad,ata,utis,sinif,index,x,blm,fn,mkt} = obje;
+    let result = completeNthstring(convertAzeriToEnglish(ad),12)+completeNthstring(convertAzeriToEnglish(soyad),14)+completeNthstring(convertAzeriToEnglish(ata),11)+utis+sinif+index+x+blm+fn+mkt;
+
+    return result;
+}
+const notify = () => toast('Here is your toast.');
+const copytoclip = () => {
+  const d = {ad,soyad,ata:ata.split(' ')[0],utis,sinif:'0'+sinif,index:' ',x:' ',blm:blm[0],fn:fn[0],mkt:mktb};
+  const r = creatNewStringFromObject(d);
+  console.log(r)
+  navigator.clipboard.writeText(r)
+      .then(() => {
+        console.log('Text copied to clipboard!');
+        toast.success(`${ad}-ın düzgün məlumatları kopyalandı! Rahatlıqla txt faylına yapışdıra bilərsiz.`,{duration:700})
+      })
+      .catch((error) => {
+        console.error('Failed to copy text:', error);
+      });
+}
   return (
     <div title={res} className="all">
       <div className="index">{num}</div>
@@ -93,6 +155,9 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
         <div className="user-info-item">
           <span className="user-info-label">Mərkəz:</span>
           <span className="user-info-value">{mrkz}</span>
+        </div>
+        <div onClick={copytoclip} className="user-info-item">
+          Kopyala
         </div>
       </div>
     </div>

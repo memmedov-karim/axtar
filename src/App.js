@@ -4,6 +4,7 @@ import { Search } from './Components/SearchingForm/Search';
 import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
+import toast, { Toaster } from 'react-hot-toast';
 function App() {
   function calculateLevenshteinDistance(str1, str2) {
     const len1 = str1.length + 1;
@@ -85,7 +86,6 @@ function App() {
       data.sort((a, b) => {
         let nameA = a.Ad.toLowerCase();
         let nameB = b.Ad.toLowerCase();
-
         // compare the lowercase names using localeCompare
         return nameA.localeCompare(nameB);
       });
@@ -167,7 +167,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Salamammmmmmmmmmmmmmmmmmmmmm</h1>
+      <Toaster  />
       <Search find={find} getData={getData} searchingData={searchingData} />
       <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
         <span onClick={()=>changeGender('q')} style={{cursor:'pointer'}}>Qiz</span>
