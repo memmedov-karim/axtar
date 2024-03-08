@@ -98,7 +98,8 @@ function completeNthstring(str,n){
 }
 function creatNewStringFromObject(obje){
     const {ad,soyad,ata,utis,sinif,index,x,blm,fn,mkt} = obje;
-    let result = completeNthstring(convertAzeriToEnglish(ad),12)+completeNthstring(convertAzeriToEnglish(soyad),14)+completeNthstring(convertAzeriToEnglish(ata),11)+utis+sinif+index+x+blm+fn+mkt;
+    const subor = sinif === 'M' ? 'R' :sinif==='T' ? 'S':sinif==='İ' ? 'I' :sinif;
+    let result = completeNthstring(convertAzeriToEnglish(ad),12)+completeNthstring(convertAzeriToEnglish(soyad),14)+completeNthstring(convertAzeriToEnglish(ata),11)+utis+subor+index+x+blm+fn+mkt;
 
     return result;
 }
