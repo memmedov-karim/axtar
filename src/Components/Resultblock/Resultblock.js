@@ -45,8 +45,7 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
     });
   };
   function handleClick(text,setcol){
-    const tx = convertAzeriToEnglish(text);
-    navigator.clipboard.writeText(tx)
+    navigator.clipboard.writeText(text)
       .then(() => {
         console.log('Text copied to clipboard!');
         toast.success(`${text}-kopyalandı.`,{duration:500})
@@ -125,15 +124,15 @@ const copytoclip = () => {
       <div className="user-info">
         <div className="user-info-item">
           <span className="user-info-label">Ad:</span>
-          <span style={{color:colorAd}} onClick={()=>handleClick((ad),setColorAd)} className="user-info-value">{ad}</span>
+          <span style={{color:colorAd}} onClick={()=>handleClick(convertAzeriToEnglish(ad),setColorAd)} className="user-info-value">{ad}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Soyad:</span>
-          <span style={{color:colorSoyad}} onClick={()=>handleClick((soyad),setColorSoyad)} className="user-info-value">{soyad}</span>
+          <span style={{color:colorSoyad}} onClick={()=>handleClick(convertAzeriToEnglish(soyad),setColorSoyad)} className="user-info-value">{soyad}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Ata:</span>
-          <span style={{color:colorAta}} onClick={()=>handleClick((ata.split(' ')[0]),setColorAta)} className="user-info-value">{ata}</span>
+          <span style={{color:colorAta}} onClick={()=>handleClick(convertAzeriToEnglish(ata.split(' ')[0]),setColorAta)} className="user-info-value">{ata}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Məktəb:</span>
