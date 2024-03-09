@@ -48,7 +48,8 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
     navigator.clipboard.writeText(text)
       .then(() => {
         console.log('Text copied to clipboard!');
-        setcol("green")
+        setcol("green");
+        toast.success(`${text}-kopyalandı.`,{duration:500})
         resetOtherColors(setcol);
       })
       .catch((error) => {
