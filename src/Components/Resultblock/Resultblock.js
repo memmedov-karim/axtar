@@ -2,32 +2,32 @@ import React, { useState } from "react";
 import "./Resultblock.css";
 import toast, { Toaster } from 'react-hot-toast';
 export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) => {
-  const ChangeText = (val) => {
-    if (val.toUpperCase() === "Ə") {
-      return "W";
-    } else if (val === "i" && (val.toUpperCase() === "İ" || val.toUpperCase() === "I") ) {
-      return "i";
-    } else if (val.toUpperCase() === "Ş") {
-      return "s";
-    } else if (val.toUpperCase() === "Ğ") {
-      return "g";
-    } else if (val.toUpperCase() === "Ö") {
-      return "o";
-    } else if (val.toUpperCase() === "Ç") {
-      return "c";
-    } else if (val.toUpperCase() === "Ü") {
-      return "u";
-    } else {
-      return val.toUpperCase();
-    }
-  };
-  const change = (text) =>{
-    let neww = "";
-    for(let i of text){
-      neww+=ChangeText(i)
-    }
-    return neww;
-  }
+  // const ChangeText = (val) => {
+  //   if (val.toUpperCase() === "Ə") {
+  //     return "W";
+  //   } else if (val === "i" && (val.toUpperCase() === "İ" || val.toUpperCase() === "I") ) {
+  //     return "i";
+  //   } else if (val.toUpperCase() === "Ş") {
+  //     return "s";
+  //   } else if (val.toUpperCase() === "Ğ") {
+  //     return "g";
+  //   } else if (val.toUpperCase() === "Ö") {
+  //     return "o";
+  //   } else if (val.toUpperCase() === "Ç") {
+  //     return "c";
+  //   } else if (val.toUpperCase() === "Ü") {
+  //     return "u";
+  //   } else {
+  //     return val.toUpperCase();
+  //   }
+  // };
+  // const change = (text) =>{
+  //   let neww = "";
+  //   for(let i of text){
+  //     neww+=ChangeText(i)
+  //   }
+  //   return neww;
+  // }
   const [colorrsnf,setcolsnf] = React.useState("")
   const [colorAd, setColorAd] = React.useState("");
   const [colorSoyad, setColorSoyad] = React.useState("");
@@ -45,7 +45,8 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
     });
   };
   function handleClick(text,setcol){
-    navigator.clipboard.writeText(text)
+    const tx = convertAzeriToEnglish(text);
+    navigator.clipboard.writeText(tx)
       .then(() => {
         console.log('Text copied to clipboard!');
         toast.success(`${text}-kopyalandı.`,{duration:500})
@@ -124,15 +125,15 @@ const copytoclip = () => {
       <div className="user-info">
         <div className="user-info-item">
           <span className="user-info-label">Ad:</span>
-          <span style={{color:colorAd}} onClick={()=>handleClick(change(ad),setColorAd)} className="user-info-value">{ad}</span>
+          <span style={{color:colorAd}} onClick={()=>handleClick((ad),setColorAd)} className="user-info-value">{ad}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Soyad:</span>
-          <span style={{color:colorSoyad}} onClick={()=>handleClick(change(soyad),setColorSoyad)} className="user-info-value">{soyad}</span>
+          <span style={{color:colorSoyad}} onClick={()=>handleClick((soyad),setColorSoyad)} className="user-info-value">{soyad}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Ata:</span>
-          <span style={{color:colorAta}} onClick={()=>handleClick(change(ata.split(' ')[0]),setColorAta)} className="user-info-value">{ata}</span>
+          <span style={{color:colorAta}} onClick={()=>handleClick((ata.split(' ')[0]),setColorAta)} className="user-info-value">{ata}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Məktəb:</span>
