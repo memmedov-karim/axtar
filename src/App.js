@@ -152,7 +152,7 @@ function App() {
     return "Məktəb tapılmadı";
   }
   const [gender,setGender] = useState("");
-  const Students = sortData(SearchingData)?.filter(a=>a["Ata adı"]?.split(" ")[1]?.includes(gender))?.map((user, ind) => {
+  const Students = sortData(SearchingData)?.map((user, ind) => {
     let name = FindScholName(user["mkod"]);
     let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
     let rti = `Şəhər-${user["Şəhər"]}`
@@ -169,11 +169,11 @@ function App() {
     <div className="App">
       <Toaster  />
       <Search find={find} getData={getData} searchingData={searchingData} />
-      <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
+      {/* <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
         <span onClick={()=>changeGender('q')} style={{cursor:'pointer'}}>Qiz</span>
         <span onClick={()=>changeGender('o')} style={{cursor:'pointer'}}>Oglan</span>
         <span onClick={()=>changeGender("")} style={{cursor:'pointer'}}>Hami</span>
-      </div>
+      </div> */}
       {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
         <h1 style={{ textAlign:"center",color: "red" }}>Belə Yetimçə yoxdu burda</h1>
