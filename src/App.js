@@ -5,6 +5,7 @@ import { Resultblock } from './Components/Resultblock/Resultblock';
 import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 import toast, { Toaster } from 'react-hot-toast';
+import { Error } from './Components/Error/Error';
 function App() {
   function calculateLevenshteinDistance(str1, str2) {
     const len1 = str1.length + 1;
@@ -167,19 +168,20 @@ function App() {
   }
   return (
     <div className="App">
-      <Toaster  />
-      <Search find={find} getData={getData} searchingData={searchingData} />
+      <Error />
+      {/*<Toaster  />*/}
+      {/*<Search find={find} getData={getData} searchingData={searchingData} />*/}
       {/* <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
         <span onClick={()=>changeGender('q')} style={{cursor:'pointer'}}>Qiz</span>
         <span onClick={()=>changeGender('o')} style={{cursor:'pointer'}}>Oglan</span>
         <span onClick={()=>changeGender("")} style={{cursor:'pointer'}}>Hami</span>
       </div> */}
-      {Students}
+      {/* {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
         <h1 style={{ textAlign:"center",color: "red" }}>Belə Yetimçə yoxdu burda</h1>
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 }
