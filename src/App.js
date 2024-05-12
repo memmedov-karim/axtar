@@ -6,6 +6,7 @@ import Data from "./rfo1.json";
 import SchoolCodes from './codes.json'
 import toast, { Toaster } from 'react-hot-toast';
 import { Error } from './Components/Error/Error';
+import Test from './Components/Test';
 function App() {
   function calculateLevenshteinDistance(str1, str2) {
     const len1 = str1.length + 1;
@@ -182,6 +183,7 @@ function App() {
       ) : (
         ""
       )} */}
+      <Test />
     </div>
   );
 }

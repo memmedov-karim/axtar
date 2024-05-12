@@ -3,7 +3,7 @@ export const Error = () => {
   return (
     <div className="all">
       <h1>
-        Serverə olan borcunuza görə sistem bağlanıb!
+        Umico-dan Datanın çəkilməsi və sadə analizlərin olunması
       </h1>
     </div>
   );
