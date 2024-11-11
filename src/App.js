@@ -169,21 +169,21 @@ function App() {
   }
   return (
     <div className="App">
-      <Error />
-      {/*<Toaster  />*/}
-      {/*<Search find={find} getData={getData} searchingData={searchingData} />*/}
-      {/* <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
+      {/* <Error /> */}
+      <Toaster  />
+      <Search find={find} getData={getData} searchingData={searchingData} />
+      <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
         <span onClick={()=>changeGender('q')} style={{cursor:'pointer'}}>Qiz</span>
         <span onClick={()=>changeGender('o')} style={{cursor:'pointer'}}>Oglan</span>
         <span onClick={()=>changeGender("")} style={{cursor:'pointer'}}>Hami</span>
-      </div> */}
-      {/* {Students}
+      </div>
+      {Students}
       {SearchingData !== null && SearchingData.length === 0 ? (
         <h1 style={{ textAlign:"center",color: "red" }}>Belə Yetimçə yoxdu burda</h1>
       ) : (
         ""
-      )} */}
-      <Test />
+      )}
+      {/* <Test /> */}
     </div>
   );
 }
