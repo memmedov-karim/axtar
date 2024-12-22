@@ -138,7 +138,7 @@ function App() {
     if(res!==""){
       const data = Data.filter(
         (obj) => ( ClearString(obj["Ad"]).toLowerCase().includes(searchingData["ad"].toLowerCase()) ) && ClearString(obj["Soyad"]).toLowerCase().includes(searchingData["soyad"].toLowerCase()) && ClearString(obj["Ata adı"]).toLowerCase().includes(ClearString(searchingData["ata"]).toLowerCase()) && (String(ClearString(obj["Utis"]).toLowerCase()).includes(searchingData["utis"].toLowerCase()) || checkutis(String(obj["Utis"]),searchingData["utis"])) &&
-        String(ClearString(obj["mkod"]).toLowerCase()).includes(String(searchingData["məktəb"].toLowerCase())) && ClearString(obj["Bölmə"]).toLowerCase().includes(searchingData["bölmə"].toLowerCase()) && ClearString(obj["Qısa ad mərkəz"]).toLowerCase().includes(searchingData["mrkz"].toLowerCase()) && String(ClearString(obj["sinif"]).toLowerCase()).includes(searchingData["sinif"].toLowerCase())
+        String(ClearString(obj["Məktəb kodu   "]).toLowerCase()).includes(String(searchingData["məktəb"].toLowerCase())) && ClearString(obj["Bölmə"]).toLowerCase().includes(searchingData["bölmə"].toLowerCase()) && ClearString(obj["Mərkəz"]).toLowerCase().includes(searchingData["mrkz"].toLowerCase()) && String(ClearString(obj["sinif"]).toLowerCase()).includes(searchingData["sinif"].toLowerCase())
       );
       setGender("")
     setSearchingData(data);
@@ -156,11 +156,11 @@ function App() {
   const [gender,setGender] = useState("");
   const Students = sortData(SearchingData)?.map((user, ind) => {
     let name = FindScholName(user["mkod"]);
-    let otherInfo = `Mərkəz:${user["Qısa ad mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
+    let otherInfo = `Mərkəz:${user["Mərkəz"]},Otaq:${user["Otaq"]},Yer:${user["Yer"]}`;
     let rti = `Şəhər-${user["Şəhər"]}`
     let res = name+ "||" + otherInfo+"||"+rti;
     return (
-      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["mkod"]} utis={user["Utis"]} sinif={user["sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]} mrkz={user["Qısa ad mərkəz"]}/>
+      <Resultblock res={res} key={ind} num={ind+1} ad={user["Ad"]} soyad={user["Soyad"]} ata={user["Ata adı"]} mktb={user["Məktəb kodu"]} utis={user["Utis"]} sinif={user["Sinif"]} blm={user["Bölmə"]} fn={user["Fənn"]} mrkz={user["Mərkəz"]}/>
     );
   });
   
