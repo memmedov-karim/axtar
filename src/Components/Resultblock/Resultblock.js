@@ -68,8 +68,8 @@ export const Resultblock = ({res,num,ad,soyad,ata,mktb,utis,sinif,blm,fn,mrkz}) 
         'ö': 'o',
         'Ğ': 'g',
         'ğ': 'g',
-        'Ə': 'W',
-        'ə': 'W',
+        'Ə': 'e',
+        'ə': 'e',
         'I': 'I',
         'ı': 'I',
         'i':'i',
@@ -99,14 +99,14 @@ function completeNthstring(str,n){
 }
 function creatNewStringFromObject(obje){
     const {ad,soyad,ata,utis,sinif,index,x,blm,fn,mkt} = obje;
-    const fn1 = fn === 'M' ? 'R' :fn==='T' ? 'S':fn==='İ' ? 'I' :fn;
-    let result = completeNthstring(convertAzeriToEnglish(ad),12)+completeNthstring(convertAzeriToEnglish(soyad),14)+completeNthstring(convertAzeriToEnglish(ata),11)+utis+sinif+index+x+blm+fn1+mkt;
+    const fn1 = fn === 'M' ? 'R' :fn==='T' ? 'T':fn==='İ' ? 'I' :fn;
+    let result = completeNthstring(convertAzeriToEnglish(ad),12)+completeNthstring(convertAzeriToEnglish(soyad),14)+completeNthstring(convertAzeriToEnglish(ata),11)+utis+mkt+sinif+index+x+blm+fn1;
 
     return result;
 }
 const notify = () => toast('Here is your toast.');
 const copytoclip = () => {
-  const d = {ad,soyad,ata:ata.split(' ')[0],utis,sinif:'0'+sinif,index:' ',x:' ',blm:blm[0],fn:fn[0],mkt:mktb};
+  const d = {ad,soyad,ata:ata.split(' ')[0],utis,sinif: sinif<10 ? sinif : (sinif+"" )[1],index:' ',x:' ',blm:blm[0],fn:fn[0],mkt:mktb};
   const r = creatNewStringFromObject(d);
   console.log(r)
   navigator.clipboard.writeText(r)
@@ -144,7 +144,7 @@ const copytoclip = () => {
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Sinif:</span>
-          <span style={{color:colorrsnf}} onClick={()=>handleClick(sinif<10 ? "0"+sinif:sinif,setcolsnf)} className="user-info-value">{sinif}</span>
+          <span style={{color:colorrsnf}} onClick={()=>handleClick(sinif<10 ? sinif:sinif[1],setcolsnf)} className="user-info-value">{sinif}</span>
         </div>
         <div className="user-info-item">
           <span className="user-info-label">Bölmə:</span>
